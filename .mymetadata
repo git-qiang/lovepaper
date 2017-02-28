@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="lovepaper"
+  id="myeclipse.1487906509863"
+  context-root="/T"
+  j2ee-spec="6.0"
+  archive="lovepaper.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
