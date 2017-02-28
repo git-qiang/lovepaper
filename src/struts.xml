@@ -33,8 +33,10 @@
 			<result name="success">/WEB-INF/login/adminlogin.jsp</result>
 		</action>
 		
-		<action name="userlogin" class="com.lovapaper.modules.login.action.LoginAction" method="skip">
-			<result name="success">/WEB-INF/login/userlogin.jsp</result>
+		<action name="userlogin" class="com.lovapaper.modules.login.action.LoginAction" method="verifyLogin">
+			<result type="json">
+				<param name="root">rr</param>
+			</result>
 		</action>
 		
 		

@@ -12,7 +12,7 @@
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/project-view/login/client_login.jsp</welcome-file>
   </welcome-file-list>
   <filter>
     <filter-name>struts2</filter-name>

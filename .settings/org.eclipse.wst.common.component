@@ -3,7 +3,7 @@
     <wb-module deploy-name="lovepaper">
         <wb-resource deploy-path="/" source-path="/WebRoot"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="/T"/>
         <property name="java-output-path" value="/lovepaper/WebRoot/WEB-INF/classes"/>
+        <property name="context-root" value="/lovepaper"/>
     </wb-module>
 </project-modules>

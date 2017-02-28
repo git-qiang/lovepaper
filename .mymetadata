@@ -3,7 +3,7 @@
   type="WEB"
   name="lovepaper"
   id="myeclipse.1487906509863"
-  context-root="/T"
+  context-root="/lovepaper"
   j2ee-spec="6.0"
   archive="lovepaper.war">
   <attributes>
