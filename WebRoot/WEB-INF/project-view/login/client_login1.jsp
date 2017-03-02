@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="s"  uri="/struts-tags"%>
 <s:set var="context_path" value="#request.get('javax.servlet.forward.context_path')"></s:set>
 <%
@@ -9,9 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-<title>检查项前台管理系统</title>
+<title>测试</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="<%=path %>/WEB-INF/project_style/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="${context_path }/project-style/js/jquery-1.8.3.min.js"></script>
 </head>
 
 <body class="login"   onkeydown="enter(this)">

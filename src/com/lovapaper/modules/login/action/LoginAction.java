@@ -10,7 +10,6 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author 61654
  *
  */
-@Action
 public class LoginAction extends ActionSupport{
 
 	private static final long serialVersionUID = -9189065399567572175L;
