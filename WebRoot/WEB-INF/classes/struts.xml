@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<!-- struts编码 -->
+<constant name="struts.i18n.Encoding" value="utf-8"></constant>
+<!-- 上传的文件保存地址 -->
+<constant name="struts.multipart.saveDir" value="C:\upload"></constant>
+
+<!-- 导入其他的xml文件<include file="struts-checktarget.xml" /> -->
+
+<package name="struts2" namespace="/" extends="struts-default,json-default">
+		<!-- 定义一个后台验证登录拦截器
+		<interceptors>
+			<interceptor name="adminintercept" class="web.ssh.util.AdminLoginInterceptor">
+			</interceptor>
+			拦截器栈 
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="adminintercept" />
+			</interceptor-stack>
+		</interceptors>
+		 -->
+		<global-results>
+			<result name="input">/WEB-INF/error.jsp</result>
+			<result name="adminlogin">/WEB-INF/login/userloginchoose.jsp</result>
+			<result name="adminlogin" type="redirectAction">
+				<param name="namespace">/</param>
+            	<param name="actionName">adminlogin</param>
+			</result>
+		</global-results>
+		
+		<action name="adminlogin" class="com.lovapaper.modules.login.action.LoginAction" method="skip">
+			<result name="success">/WEB-INF/login/adminlogin.jsp</result>
+		</action>
+		
+		<action name="userlogin" class="com.lovapaper.modules.login.action.LoginAction" method="verifyLogin">
+			<result type="json">
+				<param name="root">rr</param>
+			</result>
+		</action>
+		
+		
+		<action name="daochu" class="web.ssh.action.CheckProjectAction"
+			method="daoChu">
+			   <result name="success" type="stream">  
+			        <param name="contentType">  
+			            application/vnd.ms-excell
+			        </param>  
+			        <param name="inputName">excelStream</param>  
+			        <param name="contentDisposition">  
+			            attachment;filename="${filename}"
+			        </param>  
+			        <param name="bufferSize">1024</param>  
+   			 </result>  
+		</action>
+		<action name="updatawidth" class="web.ssh.action.CheckProjectShowFieldAction"
+			method="updataWidth">
+			<result type="json">
+				<param name="root">num2</param>
+			</result>
+		</action>
+		<action name="checkobjmain" class="web.ssh.action.CheckProjectAction"
+			method="checkObjMain">
+			<result name="success">/WEB-INF/view/checkPro/check.jsp</result>
+			<!-- 
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminintercept"></interceptor-ref>
+			 -->
+		</action>
+</package>
+</struts>    

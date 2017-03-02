@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
 <title>测试</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="${context_path }/project-style/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<%=path %>/project-quote/js/jquery-3.1.1.js"></script>
 </head>
 
 <body class="login"   onkeydown="enter(this)">
@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <br> <br>
   <div>  
     <label>
-      <input type="button"  onclick="login();" value="登录" style="opacity: 0.7;float:right; width:70px; height:32px;"/>
+      <input type="button"  onclick="login();" value="登录" style="opacity: 0.7; width:70px; height:32px;"/>
     </label>
   </div>
 </div>
@@ -62,7 +62,7 @@ if(!username){
 $.ajax({
 	url:"userlogin",
 	type:"post",
-	data:{"username":username,"userpwd":userpwd},
+	data:{"object1":username,"object2":userpwd},
 	success:function(ret){
 		if(ret.code==444){
 			alert(ret.msg);
