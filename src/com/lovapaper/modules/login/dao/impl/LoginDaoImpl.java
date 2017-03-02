@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateOperations;
+import org.springframework.stereotype.Repository;
 
 import com.lovapaper.entity.User;
 import com.lovapaper.modules.login.dao.LoginDao;
@@ -14,6 +15,7 @@ import com.lovapaper.modules.login.dao.LoginDao;
  * @author my love
  *
  */
+@Repository
 public class LoginDaoImpl implements LoginDao{
 	
 	public static Logger log = Logger.getLogger(LoginDaoImpl.class);
@@ -28,9 +30,13 @@ public class LoginDaoImpl implements LoginDao{
 			log.debug("登录验证： "+LoginDaoImpl.class+" : verifyLogin");
 		}
 		if(username!=null&&password!=null){
-			List<User> listuser = this.hibernateOperations.find("select username,password from user");
+			try{
+			List<User> listuser = this.hibernateOperations.find("from User where id = '1'");
 			if(!listuser.isEmpty()){
 				System.out.println(listuser.get(0).getUsername());
+			}
+			}catch(Exception e){
+				e.printStackTrace();
 			}
 			
 			User user = new User();

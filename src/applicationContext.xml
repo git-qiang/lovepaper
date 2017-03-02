@@ -2,20 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" 
 	   xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx" 
-	   xmlns:mvc="http://www.springframework.org/schema/mvc" 
 	   xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 	    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd 
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 	
 	<!-- 组件扫描 -->
-	<context:component-scan base-package="com.lovepaper" />
-	
-	<!-- 注解驱动 -->		
-	<mvc:annotation-driven/>
+	<context:component-scan base-package="com.lovapaper"/>
 	
 	<!-- 引入配置 jdbc.properites-->
     <context:property-placeholder location="classpath:jdbc.properties" /> 
@@ -43,7 +38,7 @@
 		</property>
 		<property name="mappingLocations">
 			<list>
-				<value>classpath:com/lovepaper/entity/*.hbm.xml</value>		<!--  加载hibernate的映射文件*.hbm.xml --> 
+				<value>classpath:/com/lovapaper/entity/*.hbm.xml</value>		<!--  加载hibernate的映射文件*.hbm.xml --> 
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -54,7 +49,7 @@
 			</props>
 		</property>
 	</bean>
-	<!-- 配置事物
+	<!-- 配置事物  -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">  
         <property name="sessionFactory" ref="sessionFactory"></property>  
     </bean>  
@@ -73,6 +68,6 @@
         <aop:pointcut expression="execution(* com.lovapaper.*.*(..))" id="daoMethod"/>  
         <aop:advisor advice-ref="txadvice" pointcut-ref="daoMethod"/>  
     </aop:config>  
-    -->
+  
 	
 	</beans>

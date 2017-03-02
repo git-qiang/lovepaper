@@ -2,6 +2,7 @@ package com.lovapaper.modules.login.action;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.lovapaper.entity.ReturnResult;
 import com.lovapaper.modules.login.service.LoginService;
@@ -11,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author 61654
  *
  */
+@Controller
 public class LoginAction extends ActionSupport{
 
 	private static final long serialVersionUID = -9189065399567572175L;
