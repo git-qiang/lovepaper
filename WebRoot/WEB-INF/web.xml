@@ -8,9 +8,12 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <welcome-file-list>
-    <welcome-file>/WEB-INF/project-view/login/client_login.jsp</welcome-file>
-  </welcome-file-list>
+	<listener>
+		<description>Introspector缓存清除监听器</description>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+  
+  <!-- struts2请求过滤器 -->
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>
@@ -21,4 +24,8 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+ <!-- 登录首页 -->
+  <welcome-file-list>
+    <welcome-file>/WEB-INF/project-view/login/client_login.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>

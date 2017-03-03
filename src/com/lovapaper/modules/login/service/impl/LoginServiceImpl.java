@@ -3,6 +3,7 @@ package com.lovapaper.modules.login.service.impl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lovapaper.modules.login.dao.LoginDao;
 import com.lovapaper.modules.login.service.LoginService;
@@ -15,7 +16,7 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private LoginDao loginDao;
 	
-	@Override
+	@Transactional
 	public boolean verifyLogin(String username, String password) {
 		if(log.isDebugEnabled()){
 			log.debug("登录验证： "+ LoginServiceImpl.class+" ：verifyLogin");

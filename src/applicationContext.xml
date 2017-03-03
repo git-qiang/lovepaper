@@ -28,7 +28,7 @@
 	
 	
 	<!-- 操作sql的template -->
-	<bean id="hibernateOperations" class="org.springframework.orm.hibernate3.HibernateTemplate">
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="sessionFactory"
@@ -46,6 +46,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate3.SpringSessionContext</prop><!-- 默认 -->
 			</props>
 		</property>
 	</bean>
@@ -53,21 +54,21 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">  
         <property name="sessionFactory" ref="sessionFactory"></property>  
     </bean>  
-    
     <tx:advice id="txadvice" transaction-manager="transactionManager">  
         <tx:attributes>  
-      		<tx:method name="*login" propagation="REQUIRED" rollback-for="Exception"/>  
-            <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>  
-            <tx:method name="modify*" propagation="REQUIRED" rollback-for="Exception"/>  
-            <tx:method name="del*" propagation="REQUIRED" rollback-for="Exception"/>  
+      		<tx:method name="*login" propagation="REQUIRED" rollback-for="RuntimeException"/>  
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="RuntimeException"/>  
+            <tx:method name="modify*" propagation="REQUIRED" rollback-for="RuntimeException"/>  
+            <tx:method name="del*" propagation="REQUIRED" rollback-for="RuntimeException"/>  
             <tx:method name="*" propagation="REQUIRED" read-only="true"/>  
         </tx:attributes>  
     </tx:advice>  
-      
     <aop:config>  
-        <aop:pointcut expression="execution(* com.lovapaper.*.*(..))" id="daoMethod"/>  
+        <aop:pointcut expression="execution(* com.lovapaper.modules.*.*.*(..))" id="daoMethod"/>  
         <aop:advisor advice-ref="txadvice" pointcut-ref="daoMethod"/>  
     </aop:config>  
+    <!-- 事物注解驱动 @Transactional -->
+    <tx:annotation-driven transaction-manager="transactionManager"  proxy-target-class="true"/>
   
 	
 	</beans>
